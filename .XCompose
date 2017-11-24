@@ -1,0 +1,11 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<dead_acute> <C>                        : "Ç"   Ccedilla # LATIN CAPITAL LETTER C WITH CEDILLA
+<dead_acute> <c>                        : "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA
+<dead_acute> <t>                        : "↑"   ccedilla # ^
+<dead_acute> <b>                        : "฿"   ccedilla #
+<dead_acute> <l>                        : "Ł"   ccedilla #
+<dead_doubleacute> <space>              : """
+<dead_diaeresis> <space>                : """   # DOUBLE ACUTE ACCENT
+<dead_doubleacute> <dead_doubleacute> 	: """   # DOUBLE ACUTE ACCENT
+<dead_diaeresis> <dead_diaeresis> 	: """   # DOUBLE ACUTE ACCENT

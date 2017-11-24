@@ -1,0 +1,96 @@
+if has("gui_running")
+    if has("gui_gtk3")
+        set guifont=Inconsolata\ Medium\ 11
+    endif
+    set lines=60 columns=90
+    colorscheme dream
+else
+    if !exists('g:not_finish_vimplug')
+        colorscheme hybrid
+    endif
+endif
+
+set background=dark
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+let g:hybrid_use_Xresources = 1
+
+filetype on
+filetype plugin on
+
+
+" make this a filetype=mediawiki
+map ,m :set filetype=mediawiki<CR>
+
+"save with ctrl-s
+map <C-s> :w<CR>
+
+" plugins configure
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let Tlist_Inc_Winwidth=40
+let Tlist_Auto_Open = 0
+"map <F4> :TlistToggle<cr>
+
+"let g:NERDTreeWinSize = 30
+
+set listchars=tab:»·,trail:·,eol:¶
+set tw=80
+set colorcolumn=80
+set list
+set cpoptions+=L
+nnoremap ,d "=strftime("%d/%m/%Y %H:%M:%S")<CR>P
+
+augroup php
+    autocmd!
+    autocmd BufRead,BufNewFile *.php setlocal expandtab foldmethod=marker
+                \ foldmarker={,}
+augroup END
+
+augroup cpp
+    autocmd!
+    autocmd BufRead,BufNewFile *.cpp setlocal expandtab foldmethod=marker
+                \ foldmarker={,}
+    autocmd BufRead,BufNewFile *.h setlocal expandtab foldmethod=marker
+                \ foldmarker={,}
+    autocmd BufRead,BufNewFile *.c setlocal expandtab foldmethod=marker
+                \ foldmarker={,}
+augroup END
+
+augroup python
+    autocmd!
+    autocmd BufRead,BufNewFile *.py setlocal expandtab
+augroup END
+
+augroup ruby
+    autocmd!
+    autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 sw=2 expandtab foldmethod=indent
+augroup END
+
+" autocmd BufNewFile,BufRead todo.txt,*.task,*.tasks  set filetype=task
+" autocmd BufNewFile,BufRead *.cruzeiropedia.org.* setlocal ft=mediawiki
+autocmd BufNewFile,BufRead vimperator-cruzeiropedia.org.* setlocal ft=mediawiki
+
+autocmd BufWrite *.rb,*.py,*.js,*.sh,*.json :Autoformat
+
+hi Visual guibg=orange guifg=white
+
+let python_highlight_all = 1
+let g:airline_powerline_fonts = 1
+
+let g:syntastic_rst_rst2pseudoxml_quiet_messages = {
+            \"type": 'error',
+            \"regex": 'Unknown directive type "youtube"'
+            \}
+let g:syntastic_c_compiler_options = '-std=c++11'
+let g:syntastic_cpp_compiler_options = '-std=c++11'
+let g:syntastic_php_phpcs_args='--tab-width=0'
+let g:gitgutter_hilight_lines = 1
+
+let g:requirements#detect_filename_pattern = 'cruzeiropedia.org'
+
+let g:PHP_removeCRwhenUnix = 1
+
+" let g:formatdef_autopep8="'autopep8 --aggressive --aggressive'"
+let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
+
+set go-=m

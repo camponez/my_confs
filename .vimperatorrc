@@ -1,0 +1,9 @@
+" completion priority in :[tab]open
+" bookmarks, suggestions, awesome bar
+set complete=lS
+set maxitems=10
+set tn
+ignorekeys add -except=o,t,/ feedly\.com
+ignorekeys add -except=o,t,/ gmail\.com
+
+" vim: ft=vimperator ts=4 sw=4 sts=0 et fdm=marker fdc=3
