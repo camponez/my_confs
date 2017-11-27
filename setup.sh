@@ -15,6 +15,7 @@ check_tools "git"
 check_tools "zsh"
 check_tools "curl"
 check_tools "tmux"
+check_tools "urxvt"
 
 echo -e "\nAll good!\n"
 
@@ -74,3 +75,8 @@ echo -e "Install vim plugins in 3s\n"
 sleep 3
 
 vim +PlugInstall +qall
+
+echo "\nConfiguring i3\n"
+mkdir -p $HOME/.i3
+
+cp -v i3/* $HOME/.i3/
