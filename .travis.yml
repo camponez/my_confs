@@ -1,0 +1,5 @@
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y make gcc git curl zsh tmux vim rxvt-unicode
+
+script: bash setup.sh
