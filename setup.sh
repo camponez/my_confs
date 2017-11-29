@@ -15,7 +15,11 @@ check_tools "git"
 check_tools "zsh"
 check_tools "curl"
 check_tools "tmux"
-check_tools "urxvt"
+if [ -f /etc/redhat-release ]; then
+    check_tools "urxvt256c"
+else
+    check_tools "urxvt"
+fi
 
 echo -e "\nAll good!\n"
 
