@@ -83,4 +83,4 @@ vim +PlugInstall +qall
 echo "\nConfiguring i3\n"
 mkdir -p $HOME/.i3
 
-cp -v i3/* $HOME/.i3/
+cp -v $CONF_DIR/i3/* $HOME/.i3/
