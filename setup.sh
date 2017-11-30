@@ -41,6 +41,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 cd $CONF_DIR/my_confs
 
 cp -v .vimperatorrc $HOME
+cp -v .pentadactylrc $HOME
 cp -v dircolors.colors $HOME
 ln -svf $HOME/dircolors.colors $HOME/.dir_colors
 cp -v .zshrc $HOME

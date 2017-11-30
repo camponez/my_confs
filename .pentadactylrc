@@ -1,0 +1,11 @@
+"1.1
+
+loadplugins '\.(js|penta)$'
+group user
+set guioptions=bCrsnT
+set passkeys=mail.google.com:jkd<CR>,stark-gerrit.ltc.br.ibm.com:u?R<CR>
+set passkeys+=feedly.com:kj<CR>
+set complete=location,suggestion
+set maxitems=10
+
+" vim: set ft=pentadactyl:
