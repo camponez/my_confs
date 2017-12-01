@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras git-flow command-not-found ruby zsh-syntax-highlighting docker python cp docker docker-compose)
+plugins=(git git-extras git-flow command-not-found ruby zsh-syntax-highlighting docker python cp docker docker-compose fzf-zsh)
 
 # User configuration
 
@@ -118,6 +118,8 @@ stty -ixon
 eval $(dircolors ~/.dir_colors)
 xmodmap $HOME/.Xmodmap
 
+set -o HIST_IGNORE_ALL_DUPS
+
 export CFLAGS="-march=native -O2 -pipe"
 export CXXFLAGS="${CFLAGS}"
 
@@ -131,4 +133,3 @@ export GTK_IM_MODULE=cedilla
 if [ -f $HOME/.local_vars ]; then
     source ~/.local_vars
 fi
-

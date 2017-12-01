@@ -38,6 +38,9 @@ fi
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/junegunn/fzf.git ${ZSH}/custom/plugins/fzf
+${ZSH}/custom/plugins/fzf/install --bin
+git clone https://github.com/Treri/fzf-zsh.git ${ZSH}/custom/plugins/fzf-zsh
 
 cd $CONF_DIR/my_confs
 
