@@ -88,4 +88,4 @@ git clone https://github.com/olivierverdier/zsh-git-prompt.git
 echo "\nConfiguring i3\n"
 mkdir -p $HOME/.i3
 
-cp -v $CONF_DIR/i3/* $HOME/.i3/
+cp -v $CONF_DIR/my_confs/i3/* $HOME/.i3/
