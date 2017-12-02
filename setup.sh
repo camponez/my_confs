@@ -80,10 +80,10 @@ cd $CONF_DIR
 echo "ZSH git prompt... \n"
 git clone https://github.com/olivierverdier/zsh-git-prompt.git
 
-echo -e "Install vim plugins in 3s\n"
-sleep 3
-
-vim +PlugInstall +qall
+# TODO - How to make install not stop at ENTER
+# echo -e "Install vim plugins in 3s\n"
+# sleep 3
+# vim +PlugInstall +qall
 
 echo "\nConfiguring i3\n"
 mkdir -p $HOME/.i3
