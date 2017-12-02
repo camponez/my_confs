@@ -12,4 +12,5 @@ addons:
       - vim
       - rxvt-unicode
 
+language: bash
 script: bash setup.sh
