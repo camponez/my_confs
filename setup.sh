@@ -59,11 +59,12 @@ cp -v .vimrc.local $HOME
 cp -v .vimrc.local.bundles $HOME
 
 echo -e "Getting fonts\n"
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts
-bash ./install.sh
+mkdir -p $HOME/.local/share/fonts
 
-if [ ! -d $HOME/.local/share/fonts ]; then
+curl -o $HOME/.local/share/fonts/Inconsolata-Regular.ttf \
+    https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Regular.ttf
+
+if [ ! -f $HOME/.local/share/fonts/Inconsolata-Regular.ttf ]; then
     echo "Fonts not installed correctly!"
     exit 1
 fi
