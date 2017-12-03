@@ -1,8 +1,10 @@
-# MY AVIT ZSH Theme
+# AVIT ZSH Theme
 
-#%{$fg[green]%}%n@%m | $(_user_host) ${_current_dir} | %{$fg[blue]%}%D{%T} | $(git_prompt_info) $(_ruby_version)
-PROMPT='
-%{$fg[green]%}%n@%m | $(_user_host) ${_current_dir} | %{$fg[blue]%}%D{%T} | $(git_super_status)
+#PROMPT='
+#%{$fg[blue]%}%T | $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+#%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+
+PROMPT='%{$terminfo[bold]%}$(_user_host)${_current_dir} %{$fg[yellow]%}%D{%Y-%m-%d} %T | $(_ruby_version) $(git_super_status)
 %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 
 PROMPT2='%{$fg[$CARETCOLOR]%}◀%{$reset_color%} '
@@ -23,13 +25,13 @@ function _current_dir() {
 }
 
 function _user_host() {
-  if [[ -n $SSH_CONNECTION ]]; then
+  #if [[ -n $SSH_CONNECTION ]]; then
     me="%n@%m"
-  elif [[ $LOGNAME != $USER ]]; then
-    me="%n"
-  fi
+  #elif [[ $LOGNAME != $USER ]]; then
+  #  me="%n"
+  #fi
   if [[ -n $me ]]; then
-    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
+    echo "%{$fg[green]%}$me%{$reset_color%}:"
   fi
 }
 
@@ -41,9 +43,9 @@ function _vi_status() {
 
 function _ruby_version() {
   if {echo $fpath | grep -q "plugins/rvm"}; then
-    echo "%{$fg[grey]%}$(rvm_prompt_info)%{$reset_color%}"
+    echo "%{$fg[red]%}$(rvm_prompt_info)%{$reset_color%}"
   elif {echo $fpath | grep -q "plugins/rbenv"}; then
-    echo "%{$fg[grey]%}$(rbenv_prompt_info)%{$reset_color%}"
+    echo "%{$fg[red]%}$(rbenv_prompt_info)%{$reset_color%}"
   fi
 }
 
