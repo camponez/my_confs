@@ -1,21 +1,14 @@
 if has("gui_running")
-    set guifont=Inconsolata-dz\ for\ Powerline\ 12
+    set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
     set lines=60 columns=90
-    colorscheme dream
 else
-    if !exists('g:not_finish_vimplug')
-        colorscheme hybrid
-    endif
+    colorscheme hybrid
 endif
 
 set background=dark
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:hybrid_use_Xresources = 1
-
-filetype on
-filetype plugin on
-
 
 " make this a filetype=mediawiki
 map ,m :set filetype=mediawiki<CR>
@@ -32,8 +25,8 @@ let Tlist_Auto_Open = 0
 "let g:NERDTreeWinSize = 30
 
 set listchars=tab:»·,trail:·,eol:¶
-set tw=80
-set colorcolumn=80
+set tw=79
+set colorcolumn=79
 set list
 set cpoptions+=L
 nnoremap ,d "=strftime("%d/%m/%Y %H:%M:%S")<CR>P
@@ -56,7 +49,7 @@ augroup END
 
 augroup python
     autocmd!
-    autocmd BufRead,BufNewFile *.py setlocal expandtab
+    autocmd BufRead,BufNewFile *.py setlocal expandtab foldmethod=indent tw=79
 augroup END
 
 augroup ruby
@@ -65,8 +58,6 @@ augroup ruby
 augroup END
 
 " autocmd BufNewFile,BufRead todo.txt,*.task,*.tasks  set filetype=task
-" autocmd BufNewFile,BufRead *.cruzeiropedia.org.* setlocal ft=mediawiki
-autocmd BufNewFile,BufRead vimperator-cruzeiropedia.org.* setlocal ft=mediawiki
 
 autocmd BufWrite *.rb,*.py,*.js,*.sh,*.json :Autoformat
 
@@ -85,6 +76,7 @@ let g:syntastic_php_phpcs_args='--tab-width=0'
 let g:gitgutter_hilight_lines = 1
 
 let g:requirements#detect_filename_pattern = 'cruzeiropedia.org'
+let g:syntastic_python_checkers = ['pylint']
 
 let g:PHP_removeCRwhenUnix = 1
 
