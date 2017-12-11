@@ -27,10 +27,10 @@ echo -e "----------------------------\n"
 
 CONF_DIR="$HOME/devel"
 
-mkdir -pv $CONF_DIR
-cd $CONF_DIR
+mkdir -pv "${CONF_DIR}"
+cd "${CONF_DIR}"
 
-if [ ! -d $CONF_DIR/my_confs ]; then
+if [ ! -d "${CONF_DIR}/my_confs" ]; then
     echo -e "Cloning my confs from github\n"
     git clone https://github.com/camponez/my_confs.git
 fi
@@ -38,7 +38,7 @@ fi
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/junegunn/fzf.git ${ZSH}/custom/plugins/fzf
+git clone https://github.com/junegunn/fzf.git "${ZSH}/custom/plugins/fzf"
 ${ZSH}/custom/plugins/fzf/install --bin
 git clone https://github.com/Treri/fzf-zsh.git ${ZSH}/custom/plugins/fzf-zsh
 
@@ -62,7 +62,7 @@ echo -e "Getting fonts\n"
 mkdir -p $HOME/.local/share/fonts
 
 curl -o $HOME/.local/share/fonts/Inconsolata-Regular.ttf \
-    https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Regular.ttf
+    https://raw.githubusercontent.com/google/fonts/master/ofl/inconsolata/Inconsolata-Regular.ttf
 
 if [ ! -f $HOME/.local/share/fonts/Inconsolata-Regular.ttf ]; then
     echo "Fonts not installed correctly!"
