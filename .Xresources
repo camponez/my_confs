@@ -6,7 +6,7 @@
 !URxvt.underlineurls       : true
 !URxvt.url-select.underline: true
 
-URxvt.font                : xft:Inconsolata\ for\ Powerline:size=14
+URxvt.font                : xft:Inconsolata\ for\ Powerline:size=13
 URxvt.cursorColor: green
 
 URxvt.termName : rxvt
