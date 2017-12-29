@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras git-flow command-not-found ruby zsh-syntax-highlighting docker python cp docker docker-compose fzf-zsh)
+plugins=(bundler git git-extras git-flow gitignore git-prompt gitfast command-not-found ruby ssh-agent tmux zsh-syntax-highlighting docker python cp docker docker-compose fzf-zsh)
 
 # User configuration
 
@@ -111,14 +111,18 @@ alias lockme='xscreensaver-command -lock'
 alias tmux='tmux -2'
 alias fixscreen="xrandr --output eDP-1 --right-of DP-1-2"
 
+
+export PATH="$PATH:$HOME/local/bin"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+
+set -o HIST_IGNORE_ALL_DUPS
 
 stty -ixon
 eval $(dircolors ~/.dir_colors)
 xmodmap $HOME/.Xmodmap
-
-set -o HIST_IGNORE_ALL_DUPS
 
 export CFLAGS="-march=native -O2 -pipe"
 export CXXFLAGS="${CFLAGS}"
@@ -129,7 +133,7 @@ export GTK_IM_MODULE=cedilla
 # export GOROOT=$HOME/local/go
 # export PATH="$HOME/local/bin:$GOROOT/bin:$PATH"
 
-#source /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 if [ -f $HOME/.local_vars ]; then
     source ~/.local_vars
 fi

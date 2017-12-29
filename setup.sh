@@ -39,24 +39,30 @@ echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/junegunn/fzf.git "${ZSH}/custom/plugins/fzf"
-${ZSH}/custom/plugins/fzf/install --bin
-git clone https://github.com/Treri/fzf-zsh.git ${ZSH}/custom/plugins/fzf-zsh
+"${ZSH}/custom/plugins/fzf/install" --bin
+git clone https://github.com/Treri/fzf-zsh.git "${ZSH}/custom/plugins/fzf-zsh"
 
-cd $CONF_DIR/my_confs
+cd "$CONF_DIR/my_confs"
 
-cp -v .vimperatorrc $HOME
-cp -v .pentadactylrc $HOME
-cp -v dircolors.colors $HOME
-ln -svf $HOME/dircolors.colors $HOME/.dir_colors
-cp -v .zshrc $HOME
-cp -v *.zsh-theme $HOME/.oh-my-zsh/themes/
-cp -v .Xmodmap $HOME/
-cp -v .Xresources $HOME/
-cp -v .XCompose $HOME/
-cp -v .tmux.conf $HOME/
-cp -v .vimrc $HOME
-cp -v .vimrc.local $HOME
-cp -v .vimrc.local.bundles $HOME
+cp -v ./*.zsh-theme "$HOME/.oh-my-zsh/themes/"
+
+DOT_FILES=(Xmodmap \
+    Xresources \
+    XCompose \
+    tmux.conf \
+    vimperatorrc \
+    pentadactylrc \
+    zshrc \
+    vimrc \
+    vimrc.local \
+    vimrc.local.bundles)
+
+for i in ${DOT_FILES[*]}; do
+    cp -v .$i "$HOME"
+done
+
+cp -v dircolors.colors "$HOME"
+ln -svf "$HOME/dircolors.colors" "$HOME/.dir_colors"
 
 echo -e "Getting fonts\n"
 mkdir -p "$HOME/.local/share/fonts"
@@ -89,4 +95,4 @@ git clone https://github.com/olivierverdier/zsh-git-prompt.git
 printf "\nConfiguring i3\n"
 mkdir -p "$HOME/.i3"
 
-cp -v "$CONF_DIR/my_confs/i3/*" "$HOME/.i3/"
+cp -v "$CONF_DIR/my_confs/i3/"* "$HOME/.i3/"

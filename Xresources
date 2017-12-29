@@ -6,12 +6,16 @@
 !URxvt.underlineurls       : true
 !URxvt.url-select.underline: true
 
-URxvt.font                : xft:Inconsolata\ for\ Powerline:size=13
-URxvt.cursorColor: green
+URxvt.font                : xft:Inconsolata-g for Powerline:size=13:antialias=true,xft:Sybola
 
 URxvt.termName : rxvt
 URxvt.scrollstyle: rxvt
 URxvt.loginShell: true
+
+!Xterm --------------------------
+
+Xterm.termName: xterm-256color
+XTerm.vt100.faceName      : xft:Inconsolata:size=14:antialias=true
 
 
 ! Xcursor --------------------------------------------------------------------

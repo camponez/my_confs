@@ -1,7 +1,9 @@
 if has("gui_running")
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
     set lines=60 columns=90
-else
+endif
+
+if !filereadable(vimplug_exists)
     colorscheme hybrid
 endif
 
@@ -15,6 +17,9 @@ map ,m :set filetype=mediawiki<CR>
 
 "save with ctrl-s
 map <C-s> :w<CR>
+
+" TODO navegate error list
+" map
 
 " plugins configure
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -61,6 +66,19 @@ augroup END
 
 autocmd BufWrite *.rb,*.py,*.js,*.sh,*.json :Autoformat
 
+autocmd BufRead,BufNewFile *.at,*.atlib set ft=at
+
+let g:ledger_fillstring = '. '
+let g:ledger_date_format = '%Y-%m-%d'
+let g:ledger_main = 'main.ledger'
+" let g:ledger_extra_options = '--pedantic --explicit --check-payees'
+
+au FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+au FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
+autocmd BufNewFile,BufRead *.ledger nmap <F2> :%LedgerAlign<CR><CR>
+" autocmd BufNewFile,BufRead *.ledger nmap <F3> :call ledger#transaction_state_toggle(line('.'), ' *!')<CR>
+" autocmd BufNewFile,BufRead *.ledger noremap <silent><buffer> <2-LeftMouse> :call ledger#transaction_state_toggle(line('.'), ' *!')<CR>
+
 hi Visual guibg=orange guifg=white
 
 let python_highlight_all = 1
@@ -77,10 +95,10 @@ let g:gitgutter_hilight_lines = 1
 
 let g:requirements#detect_filename_pattern = 'cruzeiropedia.org'
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_ruby_checkers = ['rubocop']
 
 let g:PHP_removeCRwhenUnix = 1
 
-" let g:formatdef_autopep8="'autopep8 --aggressive --aggressive'"
 let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
 
 set go-=m
