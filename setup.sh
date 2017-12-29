@@ -59,26 +59,26 @@ cp -v .vimrc.local $HOME
 cp -v .vimrc.local.bundles $HOME
 
 echo -e "Getting fonts\n"
-mkdir -p $HOME/.local/share/fonts
+mkdir -p "$HOME/.local/share/fonts"
 
-curl -o $HOME/.local/share/fonts/Inconsolata-Regular.ttf \
+curl -o "$HOME/.local/share/fonts/Inconsolata-Regular.ttf" \
     https://raw.githubusercontent.com/google/fonts/master/ofl/inconsolata/Inconsolata-Regular.ttf
 
-if [ ! -f $HOME/.local/share/fonts/Inconsolata-Regular.ttf ]; then
+if [ ! -f "$HOME/.local/share/fonts/Inconsolata-Regular.ttf" ]; then
     echo "Fonts not installed correctly!"
     exit 1
 fi
 
-echo "Rebuilding fonts in 3s...\n"
+printf "Rebuilding fonts in 3s...\n"
 sleep 3
 
-fc-cache -vf $HOME/.local/share/fonts
+fc-cache -vf "$HOME/.local/share/fonts"
 
-cd $CONF_DIR/my_confs
+cd "$CONF_DIR/my_confs"
 rm -rvf fonts
 
-cd $CONF_DIR
-echo "ZSH git prompt... \n"
+cd "$CONF_DIR"
+printf "ZSH git prompt... \n"
 git clone https://github.com/olivierverdier/zsh-git-prompt.git
 
 # TODO - How to make install not stop at ENTER
@@ -86,7 +86,7 @@ git clone https://github.com/olivierverdier/zsh-git-prompt.git
 # sleep 3
 # vim +PlugInstall +qall
 
-echo "\nConfiguring i3\n"
-mkdir -p $HOME/.i3
+printf "\nConfiguring i3\n"
+mkdir -p "$HOME/.i3"
 
-cp -v $CONF_DIR/my_confs/i3/* $HOME/.i3/
+cp -v "$CONF_DIR/my_confs/i3/*" "$HOME/.i3/"
