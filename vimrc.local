@@ -3,7 +3,7 @@ if has("gui_running")
     set lines=60 columns=90
 endif
 
-if !filereadable(vimplug_exists)
+if filereadable(vimplug_exists)
     colorscheme hybrid
 endif
 
@@ -101,4 +101,5 @@ let g:PHP_removeCRwhenUnix = 1
 
 let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
 
+" disable menu
 set go-=m
