@@ -99,6 +99,12 @@ let g:syntastic_ruby_checkers = ['rubocop']
 
 let g:PHP_removeCRwhenUnix = 1
 
+let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+let g:ale_open_list = 1
+
 let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
 
 " disable menu
