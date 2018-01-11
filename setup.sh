@@ -58,7 +58,7 @@ DOT_FILES=(Xmodmap \
     vimrc.local.bundles)
 
 for i in ${DOT_FILES[*]}; do
-    cp -v .$i "$HOME"
+    cp -v $i "$HOME/.$i"
 done
 
 cp -v dircolors.colors "$HOME"
