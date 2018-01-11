@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(bundler git git-extras git-flow gitignore git-prompt gitfast command-not-found ruby ssh-agent tmux zsh-syntax-highlighting docker python cp docker docker-compose fzf-zsh)
+plugins=(bundler git git-extras git-flow gitignore git-prompt gitfast command-not-found ruby ssh-agent tmux fast-syntax-highlighting docker python cp docker docker-compose fzf-zsh)
 
 # User configuration
 
