@@ -18,6 +18,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec /usr/bin/urxvt  -depth 32  -C -fade 60% +ls -sr -fg grey80 -bw 0 -cr green -tr -tint black -sl 32000 -sh 40% +bl -cd $HOME -e "/usr/bin/zsh"
+#bindsym $mod+Return exec /usr/bin/st -e tmux
 
 # kill focused window
 bindsym $mod+Shift+Q kill
