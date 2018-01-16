@@ -1,0 +1,3 @@
+[submodule "simple-terminal"]
+	path = simple-terminal
+	url = https://github.com/camponez/simple-terminal.git
