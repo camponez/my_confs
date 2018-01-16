@@ -68,14 +68,9 @@ ln -svf "$HOME/dircolors.colors" "$HOME/.dir_colors"
 
 echo -e "Getting fonts\n"
 mkdir -p "$HOME/.local/share/fonts"
-
-curl -o "$HOME/.local/share/fonts/Inconsolata-Regular.ttf" \
-    https://raw.githubusercontent.com/google/fonts/master/ofl/inconsolata/Inconsolata-Regular.ttf
-
-if [ ! -f "$HOME/.local/share/fonts/Inconsolata-Regular.ttf" ]; then
-    echo "Fonts not installed correctly!"
-    exit 1
-fi
+POWERLINE_FONT="Inconsolata_for_Powerline.otf"
+POWERLINE_FONT_PATH="$HOME/.local/share/fonts/"
+cp -v "${POWERLINE_FONT}" "${POWERLINE_FONT_PATH}"
 
 printf "Rebuilding fonts in 3s...\n"
 sleep 3
