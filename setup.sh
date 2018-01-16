@@ -15,8 +15,10 @@ check_tools "git"
 check_tools "zsh"
 check_tools "curl"
 check_tools "tmux"
+
+#TODO remove check of urxvt if all goes well with Simple Terminal
 if [ -f /etc/redhat-release ]; then
-    check_tools "urxvt256c"
+    check_tools "urxvt256c-ml"
 else
     check_tools "urxvt"
 fi
