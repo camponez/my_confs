@@ -35,7 +35,29 @@ cd "${CONF_DIR}"
 if [ ! -d "${CONF_DIR}/my_confs" ]; then
     echo -e "Cloning my confs from github\n"
     git clone https://github.com/camponez/my_confs.git
+    cd my_confs
+    git submodule init
+    git submodule update
 fi
+
+SIMPLE_TERMINAL="${CONF_DIR}/my_confs/simple-terminal"
+
+echo -e "Building simple-teminal"
+cd "${SIMPLE_TERMINAL}"
+make
+
+mkdir -p "$HOME/bin/"
+if [ -z "$USER" -o "$USER" == "root" ]; then
+    cp -v "${SIMPLE_TERMINAL}/st" /usr/bin/
+else
+    sudo cp -v "${SIMPLE_TERMINAL}/st" /usr/bin/
+fi
+
+if [ ! -f /usr/bin/sf ]; then
+    echo 'Could install Simple Terminal'
+    exit 1
+fi
+
 
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
