@@ -34,6 +34,7 @@ set tw=79
 set colorcolumn=79
 set list
 set cpoptions+=L
+set relativenumber
 nnoremap ,d "=strftime("%d/%m/%Y %H:%M:%S")<CR>P
 
 augroup php
