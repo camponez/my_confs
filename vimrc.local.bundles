@@ -1,4 +1,4 @@
-Plug 'hdima/python-syntax'
+Plug 'kh3phr3n/python-syntax'
 Plug 'samsonw/vim-task'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
