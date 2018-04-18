@@ -53,7 +53,7 @@ else
     sudo cp -v "${SIMPLE_TERMINAL}/st" /usr/bin/
 fi
 
-if [ ! -f /usr/bin/sf ]; then
+if [ ! -f /usr/bin/st ]; then
     echo 'Could install Simple Terminal'
     exit 1
 fi
