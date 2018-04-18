@@ -101,6 +101,7 @@ let g:syntastic_ruby_checkers = ['rubocop']
 let g:PHP_removeCRwhenUnix = 1
 
 let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
+let g:ale_python_pylint_change_directory = 0
 let g:airline#extensions#ale#enabled = 1
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
