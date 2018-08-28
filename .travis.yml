@@ -3,6 +3,7 @@ addons:
   apt:
     sources:
       - sourceline: 'deb http://ppa.launchpad.net/jonathonf/vim/ubuntu trusty main'
+    travis_apt_options: --allow-unauthenticated
     packages:
       - make
       - gcc
