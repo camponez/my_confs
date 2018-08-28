@@ -1,6 +1,7 @@
 if has("gui_running")
-    set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
-    set lines=60 columns=90
+    " set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
+    set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline\ 13
+    set lines=60 columns=82
 endif
 
 if filereadable(vimplug_exists)
@@ -8,9 +9,11 @@ if filereadable(vimplug_exists)
 endif
 
 set background=dark
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
 let g:hybrid_use_Xresources = 1
+
+filetype on
+filetype plugin on
+
 
 " make this a filetype=mediawiki
 map ,m :set filetype=mediawiki<CR>
@@ -49,13 +52,11 @@ augroup cpp
                 \ foldmarker={,}
     autocmd BufRead,BufNewFile *.h setlocal expandtab foldmethod=marker
                 \ foldmarker={,}
-    autocmd BufRead,BufNewFile *.c setlocal expandtab foldmethod=marker
-                \ foldmarker={,}
 augroup END
 
 augroup python
     autocmd!
-    autocmd BufRead,BufNewFile *.py setlocal expandtab foldmethod=indent tw=79
+    autocmd BufRead,BufNewFile *.py setlocal expandtab
 augroup END
 
 augroup ruby
@@ -64,6 +65,7 @@ augroup ruby
 augroup END
 
 " autocmd BufNewFile,BufRead todo.txt,*.task,*.tasks  set filetype=task
+autocmd BufNewFile,BufRead *cruzeiropedia.org.* setlocal ft=mediawiki
 
 autocmd BufWrite *.rb,*.py,*.js,*.sh,*.json :Autoformat
 
@@ -76,11 +78,12 @@ let g:ledger_main = 'main.ledger'
 
 au FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
 au FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
-autocmd BufNewFile,BufRead *.ledger nmap <F2> :%LedgerAlign<CR><CR>
-" autocmd BufNewFile,BufRead *.ledger nmap <F3> :call ledger#transaction_state_toggle(line('.'), ' *!')<CR>
-" autocmd BufNewFile,BufRead *.ledger noremap <silent><buffer> <2-LeftMouse> :call ledger#transaction_state_toggle(line('.'), ' *!')<CR>
+
+autocmd BufWrite *.rb,*.js,*.py,*.c,*.go,*.json,*.sh :Autoformat
+let g:autoformat_autoindent = 0
 
 hi Visual guibg=orange guifg=white
+hi ColorColumn guibg=#556873 guifg=white
 
 let python_highlight_all = 1
 let g:airline_powerline_fonts = 1
@@ -95,23 +98,25 @@ let g:syntastic_php_phpcs_args='--tab-width=0'
 let g:gitgutter_hilight_lines = 1
 
 let g:requirements#detect_filename_pattern = 'cruzeiropedia.org'
-let g:syntastic_python_checkers = ['pylint']
+
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_python_checkers = ['pylint']
+
+" ALE
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 0
+let g:ale_linters_explicit = 1
 
 let g:PHP_removeCRwhenUnix = 1
 
-let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
-let g:ale_python_pylint_change_directory = 0
-let g:airline#extensions#ale#enabled = 1
-let g:ale_set_loclist = 1
-let g:ale_set_quickfix = 0
-let g:ale_open_list = 1
-
-let python_highlight_all = 1
-
-let g:airline_theme = 'simple'
+let base16colorspace=256  " Access colors present in 256 colorspace"
 
 let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
 
 " disable menu
 set go-=m
+
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#source('_',
+            \ 'disabled_syntaxes', ['Comment', 'String'])

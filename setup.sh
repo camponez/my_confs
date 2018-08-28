@@ -92,7 +92,7 @@ ln -svf "$HOME/dircolors.colors" "$HOME/.dir_colors"
 
 echo -e "Getting fonts\n"
 mkdir -p "$HOME/.local/share/fonts"
-POWERLINE_FONT="Inconsolata_for_Powerline.otf"
+POWERLINE_FONT="Meslo LG L DZ Regular for Powerline.otf"
 POWERLINE_FONT_PATH="$HOME/.local/share/fonts/"
 cp -v "${POWERLINE_FONT}" "${POWERLINE_FONT_PATH}"
 
