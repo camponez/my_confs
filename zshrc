@@ -121,6 +121,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 set -o HIST_IGNORE_ALL_DUPS
 set -o HIST_IGNORE_SPACE
+set -o PUSHDSILENT
 
 stty -ixon
 eval $(dircolors ~/.dir_colors)
