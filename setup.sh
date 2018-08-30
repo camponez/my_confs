@@ -58,6 +58,8 @@ if [ ! -f /usr/bin/st ]; then
     exit 1
 fi
 
+echo -e "Get diff-so-fancy"
+wget -P "$HOME/bin" https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
 
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
@@ -79,6 +81,7 @@ DOT_FILES=(Xmodmap \
     vimperatorrc \
     pentadactylrc \
     zshrc \
+    gitconfig \
     vimrc \
     vimrc.local \
     vimrc.local.bundles)

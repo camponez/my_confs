@@ -1,0 +1,45 @@
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+	ui = true
+[user]
+	email = camponez@gmail.com
+	name = Eduardo Elias
+	signingkey = D9BE388D55278C05
+[diff]
+	renames = true
+[push]
+	default = matching
+[alias]
+	dc = diff --cached
+    fp = fetch --tags --prune --all
+    plog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    st = status
+    b = branch -vv
+	pom = pull --tags origin master
+	co = checkout
+[mergetool]
+	keepBackup = false
+[url "git@github.com:"]
+	pushInsteadOf = git://github.com/
+	pushInsteadOf = https://github.com/
+[sendmail]
+	confirm = auto
+[gpg]
+	program = gpg2
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
