@@ -61,6 +61,9 @@ fi
 echo -e "Get diff-so-fancy"
 wget -P "$HOME/bin" https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
 
+echo -e "Installng ack..."
+curl https://beyondgrep.com/ack-2.24-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
+
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
