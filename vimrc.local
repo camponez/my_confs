@@ -85,6 +85,7 @@ let g:autoformat_autoindent = 0
 hi Visual guibg=orange guifg=white
 hi ColorColumn guibg=#556873 guifg=white
 
+" python-syntax: Switch on all options
 let python_highlight_all = 1
 let g:airline_powerline_fonts = 1
 
