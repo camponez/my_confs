@@ -39,6 +39,8 @@ set list
 set cpoptions+=L
 set relativenumber
 nnoremap ,d "=strftime("%d/%m/%Y %H:%M:%S")<CR>P
+" make word completion to include -
+set lisp
 
 augroup php
     autocmd!
