@@ -17,8 +17,8 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/urxvt  -depth 32  -C -fade 60% +ls -sr -fg grey80 -bw 0 -cr green -tr -tint black -sl 32000 -sh 40% +bl -cd $HOME -e "/usr/bin/zsh"
-#bindsym $mod+Return exec /usr/bin/st -e tmux
+#bindsym $mod+Return exec /usr/bin/urxvt256c-ml -depth 32  -C -fade 60% +ls -sr -fg grey80 -bw 0 -cr green -tr -tint black -sl 32000 -sh 40% +bl cd $HOME -e "/usr/bin/zsh"
+bindsym $mod+Return exec $HOME/bin/st -e tmux
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -71,7 +71,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
 #bindcode $mod+d focus child
@@ -156,11 +156,10 @@ force_focus_wrapping yes
 #Custom
 assign [class="Firefox"] 3
 assign [class="Thunderbird"] 3
+assign [class="Pidgin"] 4
 assign [class="Google-chrome"] 4
+assign [class="Pale moon"] 3
 
-
-bindsym $mod+Shift+f [class="Firefox"] focus
-bindsym $mod+Shift+t [class="Thunderbird"] focus
 
 for_window [class="Display"] floating enable
 
@@ -170,21 +169,15 @@ workspace 3 output eDP-1
 workspace 4 output eDP-1
 
 #exec --no-startup-id nm-applet
-#exec --no-startup-id /usr/libexec/gnome-settings-daemon
-#exec --no-startup-id /usr/bin/pulseaudio
-#exec --no-startup-id gnome-volume-control-applet
-#exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xbindkeys
 exec --no-startup-id xscreensaver
-exec --no-startup-id firefox
+exec --no-startup-id palemoon
 exec --no-startup-id google-chrome
-exec --no-startup-id thunderbird
 
 workspace_layout tabbed
 
 bar {
     mode dock
     position top
-    # status_command /home/eduardo.ferreira/bin/i3status.sh
-    status_command i3status -c ~/.i3/i3status
-    #last_full_capacity = true
+    status_command i3status -c ~/.i3/i3status | $HOME/.pyenv/shims/python $HOME/.i3/weather.py --wrap-i3-status --update-interval 900  --api-key APIKEY --place Dublin --format '{city}, {text}, {temp_c}C, Winds: {wind_speed_kmh}km/h'
 }

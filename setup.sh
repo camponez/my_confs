@@ -123,3 +123,11 @@ printf "\nConfiguring i3\n"
 mkdir -p "$HOME/.i3"
 
 cp -v "$CONF_DIR/my_confs/i3/"* "$HOME/.i3/"
+
+echo 'Final manual step:'
+echo "Still need to be installed:"
+echo "Palemoon"
+echo "xkeybinds"
+echo "xscreensaver"
+echo ''
+echo 'set API key from https://home.openweathermap.org/api_keys'
