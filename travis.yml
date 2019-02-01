@@ -8,7 +8,6 @@ addons:
       - curl
       - zsh
       - tmux
-      - rxvt-unicode
 
 language: bash
 script: bash setup.sh
