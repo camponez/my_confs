@@ -19,7 +19,7 @@ ZSH_THEME="my_bira"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=15
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -50,22 +50,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(bundler git git-extras git-flow gitignore git-prompt gitfast command-not-found ruby ssh-agent tmux fast-syntax-highlighting docker python cp docker docker-compose fzf-zsh)
+plugins=(bundler git git-extras git-flow gitignore git-prompt git-flow gitfast command-not-found ruby ssh-agent tmux fast-syntax-highlighting docker python cp docker docker-compose fzf-zsh jump)
 
-# User configuration
-
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-#source "$HOME/.antigen/antigen.zsh"
-#
-#antigen-use oh-my-zsh
-#antigen-bundle arialdomartini/oh-my-git
-#antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
-#
-#antigen-apply
-
-#source $ZSH/custom/zshrc.sh
 source $ZSH/oh-my-zsh.sh
 
 source $HOME/devel/zsh-git-prompt/zshrc.sh
@@ -80,9 +66,6 @@ export LANG=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -107,16 +90,21 @@ alias gvim='vim -g -b'
 alias grep='grep -n --color=auto'
 alias chmod='chmod -v'
 alias gpg='gpg2'
+
 alias lockme='xscreensaver-command -lock'
 alias tmux='tmux -2'
-alias cdd='cd $(ls -d */ | fzf)'
-alias fixscreen="xrandr --output eDP-1 --right-of DP-1-2"
 
+alias gmaster='export MY_BRANCH=$(git_current_branch); gco master'
+alias gback='gco $MY_BRANCH'
+
+# alias fixscreen="xrandr --output eDP-1 --right-of DP-1-2"
+
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 export PATH="$PATH:$HOME/local/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 
 
 set -o HIST_IGNORE_ALL_DUPS
@@ -132,11 +120,14 @@ export CXXFLAGS="${CFLAGS}"
 
 export GTK_IM_MODULE=cedilla
 
-# source $HOME/devel/tmuxinator/completion/tmuxinator.zsh
+# Enable GO
 # export GOROOT=$HOME/local/go
 # export PATH="$HOME/local/bin:$GOROOT/bin:$PATH"
 
-source /usr/bin/virtualenvwrapper.sh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+
 if [ -f $HOME/.local_vars ]; then
     source ~/.local_vars
 fi
