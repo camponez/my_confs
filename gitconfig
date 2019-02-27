@@ -1,8 +1,8 @@
 [color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 	ui = true
 [user]
 	email = camponez@gmail.com
@@ -14,10 +14,10 @@
 	default = matching
 [alias]
 	dc = diff --cached
-    fp = fetch --tags --prune --all
-    plog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    st = status
-    b = branch -vv
+	fp = fetch --tags --prune --all
+	plog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	st = status
+	b = branch -vv
 	pom = pull --tags origin master
 	co = checkout
 [mergetool]
