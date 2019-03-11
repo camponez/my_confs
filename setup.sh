@@ -8,6 +8,7 @@ check_tools() {
         exit 1
     else
         echo "$1 is installed! Yay!"
+    echo "Install git zsh curl tmux gcc make"
     fi
 }
 
@@ -38,12 +39,16 @@ fi
 SIMPLE_TERMINAL="${CONF_DIR}/my_confs/simple-terminal"
 
 echo -e "Building simple-teminal"
+if [ ! -d "${SIMPLE_TERMINAL}" ]; then
+    git submodule init
+    git submodule update
+fi
 cd "${SIMPLE_TERMINAL}"
 make
 
 mkdir -p "$HOME/bin/"
 if [ -z "$USER" -o "$USER" == "root" ]; then
-    cp -v "${SIMPLE_TERMINAL}/st" /usr/bin/
+    cp -v "${SIMPLE_TERMINAL}/st" $HOME/bin/
 else
     sudo cp -v "${SIMPLE_TERMINAL}/st" /usr/bin/
 fi
@@ -107,7 +112,7 @@ rm -rvf fonts
 
 cd "$CONF_DIR"
 printf "ZSH git prompt... \n"
-git clone https://github.com/olivierverdier/zsh-git-prompt.git
+git clone https://github.com/starcraftman/zsh-git-prompt.git
 
 # TODO - How to make install not stop at ENTER
 # echo -e "Install vim plugins in 3s\n"
