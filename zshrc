@@ -103,7 +103,6 @@ alias rm='rm -v'
 alias cp='cp -vi'
 alias du='du -hs'
 alias mv='mv -v'
-alias gvim='vim -g -b'
 alias grep='grep -n --color=auto'
 alias chmod='chmod -v'
 alias gpg='gpg2'
@@ -111,7 +110,9 @@ alias lockme='xscreensaver-command -lock'
 alias tmux='tmux -2'
 alias cdd='cd $(ls -d */ | fzf)'
 alias fixscreen="xrandr --output eDP-1 --right-of DP-1-2"
+alias vim='nvim'
 
+export EDITOR='nvim'
 
 export PATH="$PATH:$HOME/local/bin"
 
