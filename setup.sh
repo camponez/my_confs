@@ -93,6 +93,16 @@ for i in ${DOT_FILES[*]}; do
     cp -v $i "$HOME/.$i"
 done
 
+NVIM_FILES=(local_init.vim \
+           local_bundles.vim \
+           init.vim)
+
+mkdir -p "$HOME/.config/nvim"
+for i in ${NVIM_FILES[*]}; do
+    cp -v $i "$HOME/.config/nvim/$i"
+done
+
+
 cp -v dircolors.colors "$HOME"
 ln -svf "$HOME/dircolors.colors" "$HOME/.dir_colors"
 
