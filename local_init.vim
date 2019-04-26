@@ -126,7 +126,7 @@ endfunction
 autocmd FileType python call MyCustomHighlights()
 
 let g:LanguageClient_serverCommands = {
-    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'python': [$HOME.'/.pyenv/shims/pyls'],
     \ }
 
 let g:test#python#pytest#executable = 'python -m pytest -v'
