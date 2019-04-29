@@ -120,6 +120,12 @@ let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeE
 " disable menu
 set go-=m
 
+if has('nvim'):
+    set inccommand=split
+    set wildoptions=pum
+    set wildmode=longest:full
+endif
+
 function MyCustomHighlights()
     hi semshiSelf ctermfg=244
 endfunction
@@ -133,6 +139,11 @@ let g:test#python#pytest#executable = 'python -m pytest -v'
 let g:test#strategy = 'neovim'
 map ,tf :TestFile<CR>
 map ,tn :TestNearest<CR>
+
+function MyCustomHighlights()
+    hi semshiSelf      ctermfg=243
+endfunction
+autocmd FileType python call MyCustomHighlights()
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#source('_',
