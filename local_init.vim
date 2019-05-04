@@ -120,7 +120,7 @@ let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeE
 " disable menu
 set go-=m
 
-if has('nvim'):
+if has('nvim')
     set inccommand=split
     set wildoptions=pum
     set wildmode=longest:full
