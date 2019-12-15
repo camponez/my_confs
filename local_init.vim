@@ -137,6 +137,7 @@ let g:LanguageClient_serverCommands = {
 
 let g:test#python#pytest#executable = 'python -m pytest -v'
 let g:test#strategy = 'neovim'
+
 map ,tf :TestFile<CR>
 map ,tn :TestNearest<CR>
 

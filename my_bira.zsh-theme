@@ -22,7 +22,7 @@ fi
 local git_branch='$(git_super_status)%{$reset_color%}'
 
 #PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch} | %D %T
-PROMPT="╭─${user_host} ${current_dir} ${git_branch} | %D %T
+PROMPT="╭─${user_host} ${current_dir} ${git_branch} | %D{%Y-%m-%d} %T
 ╰─%B${user_symbol}%b "
 RPS1="%B${return_code}%b"
 
