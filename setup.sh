@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo -e "Install needed packages"
+
+sudo apt install x11proto-dev libfreetype6-dev libfontconfig1-dev \
+    libx11-dev libxft-dev make build-essential libssl-dev \
+    zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget \
+    curl llvm libncurses5-dev libncursesw5-dev libevent-dev bison \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+
 echo -e "Check if basic tools are installed...\n"
 
 check_tools() {
@@ -58,8 +66,10 @@ if [ ! -f /usr/bin/st ]; then
     exit 1
 fi
 
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 echo -e "Get diff-so-fancy"
-wget -P "$HOME/bin" https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
+wget -c -P "$HOME/bin" https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
 
 echo -e "Installng ack..."
 curl https://beyondgrep.com/ack-2.24-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
@@ -123,6 +133,8 @@ rm -rvf fonts
 cd "$CONF_DIR"
 printf "ZSH git prompt... \n"
 git clone https://github.com/starcraftman/zsh-git-prompt.git
+
+chmod +x ~/bin/*
 
 # TODO - How to make install not stop at ENTER
 # echo -e "Install vim plugins in 3s\n"
