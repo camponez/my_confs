@@ -4,11 +4,11 @@ echo -e "Install needed packages"
 
 sudo apt install x11proto-dev libfreetype6-dev libfontconfig1-dev \
     libx11-dev libxft-dev make build-essential libssl-dev \
-    zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget \
+    zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
     curl llvm libncurses5-dev libncursesw5-dev libevent-dev bison \
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl git \
     libc-ares2 libcrypto++6 libmediainfo0v5 libpcrecpp0v5 libzen0v5 \
-    libmms0 libtinyxml2-6a
+    libmms0 libtinyxml2-6a zsh i3 tmux wget
 
 echo -e "Check if basic tools are installed...\n"
 
