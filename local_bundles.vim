@@ -28,4 +28,4 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Indentation based movements
 Plug 'jeetsukumaran/vim-indentwise'
-
+Plug 'mboughaba/i3config.vim'

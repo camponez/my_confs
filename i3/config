@@ -182,3 +182,4 @@ bar {
 #    status_command i3status -c ~/.i3/i3status | $HOME/.pyenv/shims/python $HOME/.i3/weather.py --wrap-i3-status --update-interval 900  --api-key APIKEY --place Dublin --format '{city}, {text}, {temp_c}C, Winds: {wind_speed_kmh}km/h'
     status_command ~/.i3/wrapper.sh
 }
+# vim: ft=i3config
