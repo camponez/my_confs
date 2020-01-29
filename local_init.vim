@@ -26,7 +26,6 @@ map <C-s> :w<CR>
 
 " plugins configure
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsSnippetsDir=$HOME.'/Ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/Ultisnips',
             \ $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips' ]
