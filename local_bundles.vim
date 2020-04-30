@@ -29,3 +29,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Indentation based movements
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'mboughaba/i3config.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'arcticicestudio/nord-vim'
+Plug 'glacambre/firenvim'
