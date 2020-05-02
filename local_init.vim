@@ -4,6 +4,18 @@ if has("gui_running")
     set lines=60 columns=82
 endif
 
+if $COLORTERM == 'gnome-terminal'
+    set term=gnome-256color
+else
+    if $TERM == 'xterm'
+        set term=xterm-256color
+    endif
+endif
+
+if &term =~ '256color'
+  set t_ut=
+endif
+
 if filereadable(vimplug_exists)
     colorscheme hybrid
 endif
@@ -26,9 +38,9 @@ map <C-s> :w<CR>
 
 " plugins configure
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsSnippetsDir=$HOME.'/Ultisnips'
+let g:UltiSnipsSnippetsDir=$HOME
 let g:UltiSnipsSnippetDirectories=[$HOME.'/Ultisnips',
-            \ $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips' ]
+                                   $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
 let Tlist_Inc_Winwidth=40
 let Tlist_Auto_Open = 0
@@ -109,6 +121,10 @@ let g:requirements#detect_filename_pattern = 'cruzeiropedia.org'
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_python_checkers = ['pylint']
 
+let g:python3_host_prog = $HOME.'/.pyenv/shims/python3'
+" let g:python_host_prog = 0
+" let g:loaded_python_provider = 0
+
 " ALE
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
@@ -124,19 +140,14 @@ let g:formatdef_autopep8 = '"autopep8 --aggressive --aggressive -".(g:DoesRangeE
 " disable menu
 set go-=m
 
-if has('nvim')
-    set inccommand=split
-    set wildoptions=pum
-    set wildmode=longest:full
-endif
+set inccommand=split
+set wildoptions=pum
+set wildmode=longest:full
 
-function MyCustomHighlights()
-    hi semshiSelf ctermfg=244
-endfunction
-autocmd FileType python call MyCustomHighlights()
 
 let g:LanguageClient_serverCommands = {
     \ 'python': [$HOME.'/.pyenv/shims/pyls'],
+    \ 'ruby': [$HOME.'/.rvm/gems/ruby-2.6.3/bin/language_server-ruby'],
     \ }
 
 let g:test#python#pytest#executable = 'python -m pytest -v'
@@ -150,6 +161,6 @@ function MyCustomHighlights()
 endfunction
 autocmd FileType python call MyCustomHighlights()
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 call deoplete#custom#source('_',
             \ 'disabled_syntaxes', ['Comment', 'String'])
