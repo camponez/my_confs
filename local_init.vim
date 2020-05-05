@@ -74,7 +74,8 @@ augroup END
 
 augroup python
     autocmd!
-    autocmd BufRead,BufNewFile *.py setlocal expandtab
+    autocmd BufRead,BufNewFile *.py setlocal expandtab foldmethod=indent
+    autocmd BufWrite *.py :Autoformat|Semshi highlight
 augroup END
 
 augroup ruby
@@ -130,6 +131,14 @@ let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 0
 let g:ale_linters_explicit = 1
+let g:ale_linters = {'python': ['pylint', 'autopep8'], 'sh': ['shellcheck']}
+let g:ale_fixers = {'python': ['autopep8']}
+let g:ale_sign_column_always = 1
+let g:ale_set_quickfix = 0
+let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\"..\");sys.path.append(\".\");'"
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 let g:PHP_removeCRwhenUnix = 1
 
@@ -156,10 +165,38 @@ let g:test#strategy = 'neovim'
 map ,tf :TestFile<CR>
 map ,tn :TestNearest<CR>
 
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
+let g:lsp_preview_float = 1
+" let g:lsp_log_file= $HOME.'/vim-lsp.log'
+
+let g:python3_host_prog = $HOME.'/.pyenv/shims/python'
+
 function MyCustomHighlights()
     hi semshiSelf      ctermfg=243
 endfunction
 autocmd FileType python call MyCustomHighlights()
+let g:firenvim_config = {
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'selector': '',
+            \ 'priority': 0,
+        \ },
+        \ 'cruzeiropedia\.org': {
+            \ 'selector': 'textarea',
+            \ 'priority': 1,
+        \ },
+    \ }
+\ }
+
+let g:LanguageClient_loggingFile = $HOME.'/LanguageClient.log'
 
 " let g:deoplete#enable_at_startup = 1
 call deoplete#custom#source('_',
