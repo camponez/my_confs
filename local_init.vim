@@ -1,5 +1,4 @@
 if has("gui_running")
-    " set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
     set guifont=Meslo\ LG\ L\ DZ\ for\ Powerline\ 13
     set lines=60 columns=82
 endif
