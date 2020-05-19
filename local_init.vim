@@ -89,13 +89,26 @@ autocmd BufWrite *.rb,*.py,*.js,*.sh,*.json :Autoformat
 
 autocmd BufRead,BufNewFile *.at,*.atlib set ft=at
 
-let g:ledger_fillstring = '. '
+"======================== LEDGER
+let g:ledger_maxwidth = 80
+let g:ledger_align_at = 46
+let g:ledger_fold_blanks = 1
+let g:ledger_fillstring = '· '
+let g:ledger_default_commodity = 'EUR'
+let g:ledger_commodity_sep = ' '
+let g:ledger_commodity_before = 0
 let g:ledger_date_format = '%Y-%m-%d'
 let g:ledger_main = 'main.ledger'
+autocmd FileType ledger setlocal expandtab tabstop=4 shiftwidth=4
+autocmd FileType ledger nmap <F2> :%LedgerAlign<CR><CR>
+autocmd FileType ledger nmap <F3> :call ledger#transaction_state_toggle(line('.'), ' *!')<CR>
+autocmd FileType ledger nmap <F4> :call ledger#entry()<CR>
+autocmd FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
+
 " let g:ledger_extra_options = '--pedantic --explicit --check-payees'
 
-au FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
-au FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
+
 
 autocmd BufWrite *.rb,*.js,*.py,*.c,*.go,*.json,*.sh :Autoformat
 let g:autoformat_autoindent = 0
