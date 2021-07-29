@@ -15,6 +15,8 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+set guicursor=i-ci-ve:ver25
+
 if filereadable(vimplug_exists)
     colorscheme hybrid
 endif
