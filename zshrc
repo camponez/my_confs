@@ -130,7 +130,7 @@ export GTK_IM_MODULE=cedilla
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 
 if [ -f $HOME/.local_vars ]; then
     source ~/.local_vars
