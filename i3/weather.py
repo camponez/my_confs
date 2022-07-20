@@ -7,12 +7,14 @@ from pyowm import OWM
 import sys
 import time
 
+
 def fuzzy_direction(degrees):
     if not degrees:
         return '?'
     directions = 'N NE E SE S SW W NW'.split()
     index = round(degrees / 45) % 8
     return directions[index]
+
 
 def arrow_direction(degrees):
     if not degrees:
@@ -21,38 +23,41 @@ def arrow_direction(degrees):
     index = round(degrees / 45) % 8
     return arrows[index]
 
+
 def unix_to_hhmm(ts):
     dt = datetime.fromtimestamp(ts)
     return dt.strftime('%H:%M')
 
+
 def format_weather(obs, format_str):
     data = {}
-    loc = obs.get_location()
-    weather = obs.get_weather()
+    loc = obs.location
+    weather = obs.weather
 
-    data['city'] = loc.get_name()
-    data['country'] = loc.get_country()
-    data['temp_f'] = round(weather.get_temperature(unit='fahrenheit')['temp'])
-    data['temp_c'] = round(weather.get_temperature(unit='celsius')['temp'])
-    data['temp_k'] = round(weather.get_temperature(unit='kelvin')['temp'])
-    data['text'] = weather.get_detailed_status()
-    data['humidity'] = weather.get_humidity()
-    data['pressure'] = weather.get_pressure()['press']
+    data['city'] = loc.name
+    data['country'] = loc.country
+    data['temp_f'] = round(weather.temperature(unit='fahrenheit')['temp'])
+    data['temp_c'] = round(weather.temperature(unit='celsius')['temp'])
+    data['temp_k'] = round(weather.temperature(unit='kelvin')['temp'])
+    data['text'] = weather.detailed_status
+    data['humidity'] = weather.humidity
+    data['pressure'] = weather.pressure['press']
 
-    wind = weather.get_wind(unit='meters_sec')
+    wind = weather.wind(unit='meters_sec')
     # Wind direction is sometimes unset; I'm assuming this occurs when
     # different weather stations for the same location report the wind
     # blowing in conflicting directions
     data['wind_direction'] = round(wind['deg']) if 'deg' in wind else None
     data['wind_speed_ms'] = round(wind['speed'])
     data['wind_speed_kmh'] = round(wind['speed'] * 3.6)
-    data['wind_speed_mph'] = round(weather.get_wind(unit='miles_hour')['speed'])
+    data['wind_speed_mph'] = round(weather.wind(unit='miles_hour')['speed'])
     data['wind_direction_fuzzy'] = fuzzy_direction(data['wind_direction'])
     data['wind_direction_arrow'] = arrow_direction(data['wind_direction'])
 
-    data['sunrise'] = unix_to_hhmm(weather.get_sunrise_time())
-    data['sunset'] = unix_to_hhmm(weather.get_sunset_time())
+    data['sunrise'] = unix_to_hhmm(weather.sunrise_time())
+    data['sunset'] = unix_to_hhmm(weather.sunset_time())
     return format_str.format(**data)
+
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
@@ -63,7 +68,7 @@ if __name__ == '__main__':
                    help="format string for output")
     p.add_argument('--position', metavar='P', type=int, default=-2,
                    help="position of output in JSON when wrapping i3status")
-    p.add_argument('--update-interval', metavar='I', type=int, default=60*10,
+    p.add_argument('--update-interval', metavar='I', type=int, default=60 * 10,
                    help="update interval in seconds (default: 10 minutes)")
     p.add_argument('--wrap-i3-status', action='store_true')
     p.add_argument('--zip-country', type=str, default='US',
@@ -71,21 +76,22 @@ if __name__ == '__main__':
 
     loc = p.add_mutually_exclusive_group(required=True)
     loc.add_argument('--zip', type=str,
-                   help='retrieve weather by postal/zip code')
+                     help='retrieve weather by postal/zip code')
     loc.add_argument('--city-id', type=int, help='retrieve weather by city ID')
     loc.add_argument('--place', type=str,
-                   help='retrieve weather by city,country name')
+                     help='retrieve weather by city,country name')
     args = p.parse_args()
 
-    owm = OWM(API_key=args.api_key, version='2.5')
+    owm = OWM(api_key=args.api_key)
 
+    owm_manager = owm.weather_manager()
     if args.zip:
-        get_observation = partial(owm.weather_at_zip_code, args.zip,
+        get_observation = partial(owm_manager.weather_at_zip_code, args.zip,
                                   args.zip_country)
     elif args.city_id:
-        get_observation = partial(owm.weather_at_id, args.city_id)
+        get_observation = partial(owm_manager.weather_at_id, args.city_id)
     else:
-        get_observation = partial(owm.weather_at_place, args.place)
+        get_observation = partial(owm_manager.weather_at_place, args.place)
 
     def _get_weather():
         return format_weather(get_observation(), args.format)
