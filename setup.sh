@@ -84,7 +84,7 @@ git clone https://github.com/junegunn/fzf.git "${ZSH}/custom/plugins/fzf"
 
 "${ZSH}/custom/plugins/fzf/install" --bin
 git clone https://github.com/Treri/fzf-zsh.git "${ZSH}/custom/plugins/fzf-zsh"
-git clone https://github.com/zdharma/fast-syntax-highlighting.git "${ZSH}/custom/plugins/fast-syntax-highlighting"
+git clone https://github.com/z-shell/F-Sy-H.git "${ZSH_CUSTOM}/plugins/F-Sy-H"
 
 cd "$CONF_DIR/my_confs"
 
