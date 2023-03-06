@@ -6,9 +6,9 @@ sudo apt install x11proto-dev libfreetype6-dev libfontconfig1-dev \
     libx11-dev libxft-dev make build-essential libssl-dev \
     zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
     curl llvm libncurses5-dev libncursesw5-dev libevent-dev bison \
-    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git \
-    libc-ares2 libcrypto++6 libmediainfo0v5 libpcrecpp0v5 libzen0v5 \
-    libmms0 libtinyxml2-6a zsh i3 tmux wget python3-neovim
+    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
+    libc-ares2 libcrypto++8 libmediainfo0v5 libpcrecpp0v5 libzen0v5 \
+    libmms0 libtinyxml2-9 zsh i3 tmux wget python3-neovim
 
 echo -e "Check if basic tools are installed...\n"
 
@@ -74,7 +74,7 @@ echo -e "Get diff-so-fancy"
 wget -c -P "$HOME/bin" https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
 
 echo -e "Installng ack..."
-curl https://beyondgrep.com/ack-2.24-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
+curl https://beyondgrep.com/ack-3.7-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
 
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
