@@ -89,6 +89,7 @@ alias mv='mv -v'
 alias grep='grep -n --color=auto'
 alias chmod='chmod -v'
 alias gpg='gpg2'
+alias j="jump"
 
 alias lockme='xscreensaver-command -lock'
 alias tmux='tmux -2'
@@ -105,7 +106,7 @@ alias vim='nvim'
 
 export EDITOR='nvim'
 
-export PATH="$PATH:$HOME/local/bin"
+export PATH="$HOME/bin:$HOME/local/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
