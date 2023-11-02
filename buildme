@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$1" = "deps" ]; then
+    make distclean
+    rm -rf build .deps
+    make -j16 > /dev/null
+
+fi
+rm -rf build
+mkdir -p build
+cd build || exit
+cmake -DCMAKE_INSTALL_PREFIX="$HOME/local" -DCMAKE_BUILD_TYPE=Release ..
+echo 'Compiling...'
+make -j16 > /dev/null
+make install > /dev/null
