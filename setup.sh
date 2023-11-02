@@ -85,7 +85,7 @@ git clone https://github.com/junegunn/fzf.git "${ZSH}/custom/plugins/fzf"
 
 "${ZSH}/custom/plugins/fzf/install" --bin
 git clone https://github.com/Treri/fzf-zsh.git "${ZSH}/custom/plugins/fzf-zsh"
-git clone https://github.com/z-shell/F-Sy-H.git "${ZSH_CUSTOM}/plugins/F-Sy-H"
+git clone https://github.com/z-shell/F-Sy-H.git "${ZSH}/custom/plugins/F-Sy-H"
 
 cd "$CONF_DIR/my_confs"
 
@@ -149,6 +149,9 @@ printf "\nConfiguring i3\n"
 mkdir -p "$HOME/.i3"
 
 cp -v "$CONF_DIR/my_confs/i3/"* "$HOME/.i3/"
+
+echo "Install some pips"
+pip install -y ipython pynvim pytest mypy
 
 echo 'Final manual step:'
 echo "Still need to be installed:"
