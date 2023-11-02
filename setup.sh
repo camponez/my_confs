@@ -71,10 +71,11 @@ fi
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 echo -e "Get diff-so-fancy"
-wget -c -P "$HOME/bin" https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
+git clone https://github.com/so-fancy/diff-so-fancy.git ${CONF_DIR}
+ln -sf $HOME/devel/diff-so-fancy/diff-so-fancy $HOME/bin/diff-so-fancy
 
 echo -e "Installng ack..."
-curl https://beyondgrep.com/ack-3.7-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
+curl https://beyondgrep.com/ack-v3.7.0 > ~/bin/ack && chmod 0755 ~/bin/ack
 
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
