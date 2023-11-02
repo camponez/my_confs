@@ -28,6 +28,7 @@ check_tools "curl"
 check_tools "tmux"
 check_tools "gcc"
 check_tools "make"
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
 
 echo -e "\nAll good!\n"
 
@@ -152,6 +153,7 @@ cp -v "$CONF_DIR/my_confs/i3/"* "$HOME/.i3/"
 
 echo "Install some pips"
 pip install -y ipython pynvim pytest mypy
+pyenv install 3.10.13
 
 echo 'Final manual step:'
 echo "Still need to be installed:"

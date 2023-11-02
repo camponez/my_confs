@@ -35,3 +35,23 @@ Plug 'glacambre/firenvim'
 Plug 'keith/rspec.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'osyo-manga/vim-over'
+
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+
+call plug#end()
+
+lua <<EOF
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+require('lint').linters_by_ft = {
+  python = {'pylint',}
+}
