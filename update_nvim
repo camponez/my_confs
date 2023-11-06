@@ -1,0 +1,49 @@
+#!/bin/bash
+
+TARGET_TAG='nightly'
+
+pushd "$HOME/devel/neovim"
+
+git tag -d "$TARGET_TAG"
+git fp
+git checkout master
+git pull origin master
+
+HEAD=$(git rev-list -n 1 branch_build)
+NIGHTLY=$(git rev-list -n 1 nightly)
+
+echo ''
+echo '##############################'
+echo "HEAD: ${HEAD}"
+echo "NIGHTLY: ${NIGHTLY}"
+echo '##############################'
+echo ''
+
+if [ "$?" != "0" ] ; then
+    exit 1
+fi
+
+git checkout branch_build
+
+if [ "$HEAD" != "$NIGHTLY" ]; then
+    echo 'BUILDING...'
+    git pull origin "$TARGET_TAG"
+
+    echo ''
+    echo '##############################'
+    echo "Let's build..."
+    echo '##############################'
+    echo ''
+
+    bash buildme
+else
+    echo ''
+    echo '##############################'
+    echo 'Nothing new to build'
+    echo '##############################'
+    echo ''
+fi
+
+git checkout master
+
+popd
