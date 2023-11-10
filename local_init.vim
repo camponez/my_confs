@@ -40,8 +40,7 @@ map <C-s> :w<CR>
 " plugins configure
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsSnippetsDir=$HOME
-let g:UltiSnipsSnippetDirectories=[$HOME.'/Ultisnips',
-                                   $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/Ultisnips', $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
 let Tlist_Inc_Winwidth=40
 let Tlist_Auto_Open = 0

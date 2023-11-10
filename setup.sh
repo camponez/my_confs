@@ -70,6 +70,8 @@ if [ ! -f /usr/bin/st ]; then
 fi
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+pip install -U pip
+pip install pynvim ipython pytest
 
 echo -e "Get diff-so-fancy"
 git clone https://github.com/so-fancy/diff-so-fancy.git ${CONF_DIR}
@@ -81,12 +83,13 @@ curl https://beyondgrep.com/ack-v3.7.0 > ~/bin/ack && chmod 0755 ~/bin/ack
 echo -e "Installing oh-my-zsh...\n"
 export SHELL="zsh"
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/junegunn/fzf.git "${ZSH}/custom/plugins/fzf"
+git clone https://github.com/junegunn/fzf.git "${ZSH_CUSTOM}/plugins/fzf"
 
 "${ZSH}/custom/plugins/fzf/install" --bin
-git clone https://github.com/Treri/fzf-zsh.git "${ZSH}/custom/plugins/fzf-zsh"
-git clone https://github.com/z-shell/F-Sy-H.git "${ZSH}/custom/plugins/F-Sy-H"
+git clone https://github.com/Treri/fzf-zsh.git "${ZSH_CUSTOM}/plugins/fzf-zsh"
+git clone https://github.com/z-shell/F-Sy-H.git "${ZSH_CUSTOM}/plugins/F-Sy-H"
 
 cd "$CONF_DIR/my_confs"
 
@@ -158,7 +161,7 @@ pyenv install 3.10.13
 echo 'Final manual step:'
 echo "Still need to be installed:"
 echo "Palemoon"
-echo "xkeybinds"
+echo "xbindkeys"
 echo "xscreensaver"
 echo ''
 echo 'set API key from https://home.openweathermap.org/api_keys'
