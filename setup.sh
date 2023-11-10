@@ -8,7 +8,8 @@ sudo apt install x11proto-dev libfreetype6-dev libfontconfig1-dev \
     curl llvm libncurses5-dev libncursesw5-dev libevent-dev bison \
     xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git \
     libc-ares2 libcrypto++8 libmediainfo0v5 libpcrecpp0v5 libzen0v5 \
-    libmms0 libtinyxml2-9 zsh i3 tmux wget python3-neovim
+    libmms0 libtinyxml2-9 zsh i3 tmux wget python3-neovim shellcheck \
+    xbindkeys
 
 echo -e "Check if basic tools are installed...\n"
 
@@ -98,6 +99,7 @@ cp -v ./*.zsh-theme "$HOME/.oh-my-zsh/themes/"
 DOT_FILES=(Xmodmap \
     Xresources \
     XCompose \
+    xbindkeys \
     tmux.conf \
     vimperatorrc \
     pentadactylrc \
@@ -119,6 +121,8 @@ mkdir -p "$HOME/.config/nvim"
 for i in ${NVIM_FILES[*]}; do
     cp -v $i "$HOME/.config/nvim/$i"
 done
+
+cp -v pycodestyle "$HOME/.config/"
 
 
 cp -v dircolors.colors "$HOME"
@@ -161,7 +165,6 @@ pyenv install 3.10.13
 echo 'Final manual step:'
 echo "Still need to be installed:"
 echo "Palemoon"
-echo "xbindkeys"
 echo "xscreensaver"
 echo ''
 echo 'set API key from https://home.openweathermap.org/api_keys'
