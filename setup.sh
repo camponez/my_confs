@@ -2,7 +2,7 @@
 
 echo -e "Install needed packages"
 
-sudo apt install x11proto-dev libfreetype6-dev libfontconfig1-dev \
+sudo apt -qq install x11proto-dev libfreetype6-dev libfontconfig1-dev \
     libx11-dev libxft-dev make build-essential libssl-dev \
     zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
     curl llvm libncurses5-dev libncursesw5-dev libevent-dev bison \
@@ -29,7 +29,6 @@ check_tools "curl"
 check_tools "tmux"
 check_tools "gcc"
 check_tools "make"
-Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
 
 echo -e "\nAll good!\n"
 
