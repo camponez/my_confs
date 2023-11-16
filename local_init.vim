@@ -49,8 +49,8 @@ let Tlist_Auto_Open = 0
 "let g:NERDTreeWinSize = 30
 
 set listchars=tab:»·,trail:·,eol:¶
-set tw=79
-set colorcolumn=79
+set tw=99
+set colorcolumn=99
 set list
 set cpoptions+=L
 set relativenumber
@@ -85,8 +85,7 @@ augroup END
 
 " autocmd BufNewFile,BufRead todo.txt,*.task,*.tasks  set filetype=task
 autocmd BufNewFile,BufRead *cruzeiropedia.org.* setlocal ft=mediawiki
-
-autocmd BufWrite *.rb,*.py,*.js,*.sh,*.json :Autoformat
+autocmd BufWrite *.rb,*.js,*.py,*.c,*.go,*.json,*.sh :Autoformat
 
 autocmd BufRead,BufNewFile *.at,*.atlib set ft=at
 
@@ -109,10 +108,11 @@ autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
 
 " let g:ledger_extra_options = '--pedantic --explicit --check-payees'
 
-
-
-autocmd BufWrite *.rb,*.js,*.py,*.c,*.go,*.json,*.sh :Autoformat
 let g:autoformat_autoindent = 0
+
+" Show trailing whitespace:
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 hi Visual guibg=orange guifg=white
 hi ColorColumn guibg=#556873 guifg=white
@@ -190,27 +190,17 @@ endif
 let g:lsp_preview_float = 1
 " let g:lsp_log_file= $HOME.'/vim-lsp.log'
 
-let g:python3_host_prog = $HOME.'/.pyenv/shims/python'
 
 function MyCustomHighlights()
     hi semshiSelf      ctermfg=243
 endfunction
 autocmd FileType python call MyCustomHighlights()
-let g:firenvim_config = {
-    \ 'localSettings': {
-        \ '.*': {
-            \ 'selector': '',
-            \ 'priority': 0,
-        \ },
-        \ 'cruzeiropedia\.org': {
-            \ 'selector': 'textarea',
-            \ 'priority': 1,
-        \ },
-    \ }
-\ }
 
 let g:LanguageClient_loggingFile = $HOME.'/LanguageClient.log'
+" To make <cr> select the first completion item and confirm the completion when no item has been selected:
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
-" let g:deoplete#enable_at_startup = 1
+let g:jedi#completions_enabled = 0
+let g:deoplete#enable_at_startup = 1
 call deoplete#custom#source('_',
             \ 'disabled_syntaxes', ['Comment', 'String'])
