@@ -33,6 +33,7 @@ map ,m :set filetype=mediawiki<CR>
 
 "save with ctrl-s
 map <C-s> :w<CR>
+nnoremap ww :w\|bd<cr>
 
 " TODO navegate error list
 " map
