@@ -16,10 +16,6 @@ Plug 'jnurmine/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'janko-m/vim-test'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'prabirshrestha/async.vim'
