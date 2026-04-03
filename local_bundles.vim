@@ -19,7 +19,6 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
 
 " Indentation based movements
 Plug 'jeetsukumaran/vim-indentwise'
