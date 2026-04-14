@@ -61,34 +61,34 @@ set lisp
 
 augroup php
     autocmd!
-    autocmd BufRead,BufNewFile *.php setlocal expandtab foldmethod=marker
+    autocmd FileType php setlocal expandtab foldmethod=marker
                 \ foldmarker={,}
 augroup END
 
 augroup cpp
     autocmd!
-    autocmd BufRead,BufNewFile *.cpp setlocal expandtab foldmethod=marker
+    autocmd FileType *.cpp setlocal expandtab foldmethod=marker
                 \ foldmarker={,}
-    autocmd BufRead,BufNewFile *.h setlocal expandtab foldmethod=marker
+    autocmd FileType *.h setlocal expandtab foldmethod=marker
                 \ foldmarker={,}
 augroup END
 
 augroup python
     autocmd!
-    autocmd BufRead,BufNewFile *.py setlocal expandtab foldmethod=indent
-    autocmd BufWrite *.py :Autoformat|Semshi highlight
+    autocmd FileType python setlocal expandtab foldmethod=indent
+    autocmd BufWrite python :Autoformat|Semshi highlight
 augroup END
 
 augroup ruby
     autocmd!
-    autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 sw=2 expandtab foldmethod=indent
+    autocmd FileType *.rb setlocal tabstop=2 sw=2 expandtab foldmethod=indent
 augroup END
 
 " autocmd BufNewFile,BufRead todo.txt,*.task,*.tasks  set filetype=task
 autocmd BufNewFile,BufRead *cruzeiropedia.org.* setlocal ft=mediawiki
 autocmd BufWrite *.rb,*.js,*.py,*.c,*.go,*.json,*.sh :Autoformat
 
-autocmd BufRead,BufNewFile *.at,*.atlib set ft=at
+autocmd FileType *.at,*.atlib set ft=at
 
 "======================== LEDGER
 let g:ledger_maxwidth = 80

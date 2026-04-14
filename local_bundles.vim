@@ -15,7 +15,7 @@ Plug 'ledger/vim-ledger'
 Plug 'jnurmine/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'janko-m/vim-test'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'wookayin/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'prabirshrestha/async.vim'
